@@ -7,7 +7,7 @@ Install dependencies
 > yarn
 ```
 
-Use [lerna]() to install packages dependencies
+Use [lerna](https://github.com/lerna/lerna) to install packages dependencies
 ```bash
 > yarn bootstrap
 ```
