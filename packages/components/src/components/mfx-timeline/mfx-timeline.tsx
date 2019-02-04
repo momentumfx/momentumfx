@@ -29,13 +29,11 @@ export class MfxTimeline {
     }
   }
 
-  // @Listen('mfxPlayerInit')
-  // onPlayerInit(event) {
-  //   this.players.push(event.detail);
-  //   event.stopPropagation();
-  //   console.log(this.name, this);    
-    
-  // }
+  @Listen('mfxPlayerInit')
+  onPlayerInit(event) {
+    this.players.push(event.detail);
+    event.stopPropagation();    
+  }
 
   componentWillLoad() {
     this.render = momentum.timeline(this.handler);

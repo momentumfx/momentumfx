@@ -1,12 +1,15 @@
 {
   "name": "root",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "lerna": "lerna",
     "link": "lerna link",
     "dev": "lerna run dev --parallel",
     "build": "lerna run build --parallel",
-    "bootstrap": "lerna bootstrap --hoist"
+    "bootstrap": "lerna bootstrap"
   },
   "devDependencies": {
     "lerna": "^3.10.7"

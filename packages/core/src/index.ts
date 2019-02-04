@@ -13,7 +13,7 @@ declare var window: Window;
 window.momentum = window.momentum || {
   init(options: Object) {
     // defineCustomElements(window);
-    console.log(options)
+    // console.log(options)
   },
   timeline,
   capture
