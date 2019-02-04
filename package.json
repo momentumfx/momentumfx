@@ -1,0 +1,14 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "lerna": "lerna",
+    "link": "lerna link",
+    "dev": "lerna run dev --parallel",
+    "build": "lerna run build --parallel",
+    "bootstrap": "lerna bootstrap --hoist"
+  },
+  "devDependencies": {
+    "lerna": "^3.10.7"
+  }
+}

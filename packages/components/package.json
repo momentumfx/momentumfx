@@ -1,0 +1,41 @@
+{
+  "name": "@momentumfx/components",
+  "version": "0.0.1",
+  "description": "Stencil Component Starter",
+  "module": "dist/esm/index.js",
+  "main": "dist/index.js",
+  "unpkg": "dist/ionic.js",
+  "types": "dist/types/index.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build": "stencil build --docs",
+    "dev": "stencil build --docs --watch",
+    "start": "stencil build --dev --watch --serve",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "demo": "cd demo && webpack-dev-server --open",
+    "ts": "ts-node --project demo/tsconfig.json demo/index.ts"
+  },
+  "devDependencies": {
+    "@stencil/core": "0.16.2",
+    "@types/node": "^10.12.19",
+    "@types/webpack": "^4.4.24",
+    "@types/webpack-dev-server": "^3.1.1",
+    "html-webpack-plugin": "^3.2.0",
+    "parcel-bundler": "^1.11.0",
+    "ts-loader": "^5.3.3",
+    "ts-node": "^8.0.2",
+    "tsconfig-paths-webpack-plugin": "^3.2.0",
+    "typescript": "^3.2.4",
+    "webpack": "^4.29.0",
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.14"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@momentumfx/core": "^1.0.0"
+  }
+}

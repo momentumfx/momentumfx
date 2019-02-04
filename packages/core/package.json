@@ -1,0 +1,31 @@
+{
+  "name": "@momentumfx/core",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "files": [
+    "dist"
+  ],
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -cw"
+  },
+  "author": "Elad Bezalel <elad.bezalel@gmail.com>",
+  "license": "ISC",
+  "homepage": "",
+  "directories": {
+    "src": "src"
+  },
+  "publishConfig": {
+    "registry": "https://registry.yarnpkg.com"
+  },
+  "dependencies": {
+    "typescript": "^3.2.4"
+  },
+  "devDependencies": {
+    "rollup": "^1.1.2",
+    "rollup-plugin-typescript2": "^0.19.2"
+  }
+}

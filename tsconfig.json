@@ -1,0 +1,24 @@
+{
+ "compilerOptions": {
+   "declaration": true,
+   "noImplicitAny": false,
+   "removeComments": true,
+   "noLib": false,
+   "emitDecoratorMetadata": true,
+   "experimentalDecorators": true,
+   "target": "es5",
+   "module": "esnext",
+   "moduleResolution": "node",
+   "sourceMap": true,
+   "types": ["node"],
+   "lib": [
+     "dom",
+     "es5",
+     "es6"
+   ]
+ },
+ "exclude": [
+   "node_modules",
+   "**/*.spec.ts"
+ ]
+}
