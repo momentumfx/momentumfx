@@ -1,5 +1,6 @@
 import { Component, Element, Event, EventEmitter, Prop } from '@stencil/core';
-import {Effect, Listener} from './interfaces';
+import {Effect, Listener, EventType, MomentumEvent} from '../interfaces';
+import {Player, PlayState} from '@momentumfx/core';
 import {listenForClass} from './listeners';
 
 const REGISTRY: {[name: string]: Listener} = {
@@ -11,15 +12,13 @@ const REGISTRY: {[name: string]: Listener} = {
   tag: 'mfx-2player'
 })
 export class MfxPlayer {
-  @Event() mfxPlayerInit: EventEmitter;
+  @Event() mfxPlayerInit: EventEmitter<MomentumEvent<Player>>;
   @Element() el: HTMLElement;
 
   @Prop() listen: string;
   @Prop() handler: string;
 
-  componentWillLoad() { 
-    this.mfxPlayerInit.emit(this);
-
+  componentDidLoad() { 
     // load all the listeners
     // and watch them for effects
     loadListeners(this.el, this.listen, REGISTRY, (effect) => {
@@ -27,7 +26,10 @@ export class MfxPlayer {
       if (fn) {
 
       }
-      console.log(effect);
+      const player = buildPlayerFromEffects(effect);
+      const type = EventType.Player;
+      const event: MomentumEvent<Player> = {value: player, type};
+      this.mfxPlayerInit.emit(event);
     });
   }
 }
@@ -52,4 +54,23 @@ function loadListeners(element: HTMLElement, listener: string = '', registry: {[
       throw new Error(`${token} is not registered inside of the provided registry`);
     }
   });
+}
+
+function buildPlayerFromEffects(input: Effect|Effect[]): Player {
+  const effects = Array.isArray(input) ? input : [input];
+  return new GroupEffectsPlayer(effects);
+}
+
+class GroupEffectsPlayer implements Player {
+  state: PlayState;
+
+  constructor(private _effects: Effect[]) {}
+
+  play(): void {
+    this._effects.forEach(e => e.execute());
+  }
+  destroy(): void {
+  }
+  finish(): void {
+  }
 }

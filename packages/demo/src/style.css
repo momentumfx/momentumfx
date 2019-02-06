@@ -4,24 +4,44 @@ body {
   top:30%;
   left:50%;
   transform:translateX(-50%);
-}
-.box {
-  display:block;
-  border:5px solid black;
-  width:500px;
-}
-header {
-  padding:10px;
-  font-size:2em;
-  cursor:pointer;
-}
-.content {
-  overflow:hidden;
   background:#eee;
 }
-.content:not(.open) {
-  height:0px;
+button {
+  display:block;
+  font-size:100px;
+  border:5px solid black;
+  width:800px;
+  position:relative;
 }
-.inner {
-  padding:10px;
+
+button:after {
+  animation:fadeOut forwards 500ms;
+  content:"";
+  position: absolute;
+  left:5%;
+  top:calc(50% - 40px);
+  width:40px;
+  height:40px;
+  border-radius:40px;
+  border:20px solid red;
+  border-top-color:transparent;
+  border-bottom-color:transparent;
+}
+
+button.loading:after {
+  animation:rotate 500ms infinite linear, fadeIn forwards 500ms;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; }
+}
+
+@keyframes rotate {
+  from {transform:rotate(0deg);}
+  to {transform:rotate(360deg);}
 }

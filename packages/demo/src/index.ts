@@ -2,15 +2,26 @@ import momentum from '@momentumfx/core';
 import {defineCustomElements} from '@momentumfx/components/dist/loader';
 
 import './style.css';
-
 import './timeline';
 
 defineCustomElements(window);
-momentum.init({});
+momentum.init();
 
-const box = document.querySelector('.box');
-const content = box.querySelector('.content');
+document.body.addEventListener('mfxTimelineRender', (e: CustomEvent) => {
+  const detail = e.detail;
+  if (detail) {
+    const players = Array.isArray(detail) ? detail : [detail];
+    players.forEach(player => {
+      player.play();
+    });
+  }
+});
 
-box.addEventListener('click', () => {
-  content.classList.toggle('open');
-})
+const buttons = document.querySelectorAll('button');
+buttons.forEach(b => {
+  b.addEventListener('click', () => {
+    buttons.forEach(b => {
+      b.classList.toggle('loading');
+    });
+  });
+});

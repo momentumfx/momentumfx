@@ -20,11 +20,11 @@ export interface Effect {
   data: any|null;
 }
 
-export interface TimelineHandler extends PlayerHandler {
-  init(parent: TimelineHandler): void;
-  render(players: Player[]): Player[];
-}
-
 export interface PlayerHandler {
   capture(effects: Effect[]): void;  
+}
+
+export interface TimelineHandler {
+  init(parent: TimelineHandler): void;
+  render(players: Player[]): Player[];
 }

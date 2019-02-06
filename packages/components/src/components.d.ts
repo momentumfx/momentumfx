@@ -8,6 +8,15 @@
 import '@stencil/core';
 
 
+import {
+  EventEmitter,
+} from '@stencil/core';
+import {
+  MomentumEvent,
+} from './components/interfaces';
+import {
+  Player,
+} from '@momentumfx/core';
 
 
 export namespace Components {
@@ -19,7 +28,7 @@ export namespace Components {
   interface Mfx2playerAttributes extends StencilHTMLAttributes {
     'handler'?: string;
     'listen'?: string;
-    'onMfxPlayerInit'?: (event: CustomEvent) => void;
+    'onMfxPlayerInit'?: (event: CustomEvent<MomentumEvent<Player>>) => void;
   }
 
   interface Mfx1timeline {

@@ -15,9 +15,9 @@
 
 ## Events
 
-| Event           | Description | Type                |
-| --------------- | ----------- | ------------------- |
-| `mfxPlayerInit` |             | `CustomEvent<void>` |
+| Event           | Description | Type                                 |
+| --------------- | ----------- | ------------------------------------ |
+| `mfxPlayerInit` |             | `CustomEvent<MomentumEvent<Player>>` |
 
 
 ----------------------------------------------

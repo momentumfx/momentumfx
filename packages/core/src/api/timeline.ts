@@ -1,9 +1,9 @@
 import { TimelineHandler } from '../intefaces';
 
-const timelines: {[key: string]: TimelineHandler['render']} = {};
+const timelines: {[key: string]: TimelineHandler} = {};
 
-export default (name: string, render?: TimelineHandler['render']) : TimelineHandler['render'] => {
-  if (!render && timelines[name]) {
+export default (name: string, handler?: TimelineHandler) : TimelineHandler => {
+  if (!handler && timelines[name]) {
     return timelines[name];
   }
 
@@ -11,5 +11,5 @@ export default (name: string, render?: TimelineHandler['render']) : TimelineHand
     throw new Error(`Momentum: A timeline named ${name} is already registerd by ${timelines[name]}`);
   }
 
-  timelines[name] = render;
+  timelines[name] = handler;
 };

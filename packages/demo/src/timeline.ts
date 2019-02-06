@@ -1,4 +1,8 @@
-import {Timeline, TimelineHandler, Player, Effect, PlayState} from '@momentumfx/core';
+import {Timeline, TimelineHandler, Player, PlayState} from '@momentumfx/core';
+
+// timeline gets player
+// timeline generates new player
+// timeline can buffer 
 
 @Timeline({
   name: 'myTimeline'
@@ -7,32 +11,29 @@ export class MyTimeline implements TimelineHandler {
   init(parent: TimelineHandler): void {
 
   }
-  capture(effects: Effect[]): void {
-    throw new Error("Method not implemented.");
-  }
-  render(players: Player[]): Player[] {
-    console.log(players, 'mytimeline');
-    
-    return players;
-  }
-  // @Listen('.divCapture')
-  // buildStyleAnimation(element, effectOrPlayer) {
 
-  // }
+  render(players: Player[]): Player[] {
+    const player = new GroupPlayer(players);
+    return [player];
+  }
 }
 
-@Timeline({
-  name: 'list'
-})
-export class MyList implements TimelineHandler {  
-  init(parent: TimelineHandler): void {
+class GroupPlayer implements Player {
+  state: PlayState = 0;
+  constructor(private _players: Player[]) {
+
+  }
+
+  play() {
+    this._players[0].play();
+    //this._players.forEach(p => p.play());
+  }
+
+  destroy(): void {
     throw new Error("Method not implemented.");
   }
-  capture(effects: Effect[]): void {
+
+  finish(): void {
     throw new Error("Method not implemented.");
-  }
-  render(players: Player[]): Player[] {
-    console.log(players, 'list');
-    return players;
   }
 }
